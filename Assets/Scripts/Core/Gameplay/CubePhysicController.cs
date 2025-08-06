@@ -8,11 +8,13 @@ namespace Core.Gameplay
     [RequireComponent(typeof(Rigidbody))]
     public class CubePhysicController : MonoBehaviour
     {
+        public Cube cube => _cube;
         public CubeData cubeData => _cubeData;
 
         [SerializeField] private float _velocityThreshold;
         private Rigidbody _rigidbody;
         private Vector3 _cachedLinearVelocity;
+        private Cube _cube;
         private CubeData _cubeData;
         private ICollisionObserver _observer;
 
@@ -22,8 +24,9 @@ namespace Core.Gameplay
             _observer = observer;
         }
 
-        public void Init(CubeData cubeData)
+        public void Init(Cube cube, CubeData cubeData)
         {
+            _cube = cube;
             _cubeData = cubeData;
         }
 
@@ -62,7 +65,7 @@ namespace Core.Gameplay
                 return;
             }
 
-            _observer.Notify(new CubeCollisionData(gameObject, _cubeData, other.gameObject, other.cubeData, collision));
+            _observer.Notify(new CubeCollisionData(_cube, _cubeData, other.cube, other.cubeData, collision));
         }
     }
 }

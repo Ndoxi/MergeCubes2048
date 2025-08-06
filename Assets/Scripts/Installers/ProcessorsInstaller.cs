@@ -1,5 +1,6 @@
 ﻿using Core.Observers;
 using Core.Processors;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -17,7 +18,18 @@ namespace Installers
 
         private void BindCollisionProcessor()
         {
-            Container.Bind<ICollisionObserver>().To<MergeProcessor>().AsSingle().WithArguments(_impulseThreshold, _mergeForce);
+            Container.Bind<IMergeObserverChanel>()
+                     .To<MergeObserverChanel>()
+                     .AsSingle();
+
+            Container.Bind(typeof(ScoreProcessor), typeof(IDisposable))
+                     .To<ScoreProcessor>()
+                     .AsSingle();            
+            
+            Container.Bind<ICollisionObserver>()
+                     .To<MergeProcessor>()
+                     .AsSingle()
+                     .WithArguments(_impulseThreshold, _mergeForce);
         }
     }
 }

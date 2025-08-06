@@ -1,17 +1,24 @@
-﻿using System;
+﻿using Core.Gameplay;
+using Core.Processors;
+using System;
+using Zenject;
 
 namespace Core.StateMachines
 {
     public class GameplayState : IState
     {
-        public void OnEnter()
+        private readonly LazyInject<CubesLauncher> _cubesLauncherContainer;
+
+        public GameplayState(LazyInject<CubesLauncher> cubesLauncherContainer)
         {
-            throw new NotImplementedException();
+            _cubesLauncherContainer = cubesLauncherContainer;
         }
 
-        public void OnExit()
+        public void OnEnter()
         {
-            throw new NotImplementedException();
+            _cubesLauncherContainer.Value.gameObject.SetActive(true);
         }
+
+        public void OnExit() { }
     }
 }

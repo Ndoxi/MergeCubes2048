@@ -12,7 +12,7 @@ namespace Core.Gameplay
         public void Init(CubeData cubeData)
         {
             _cubeData = cubeData;
-            _controller.Init(cubeData);
+            _controller.Init(this, cubeData);
             _view.Init(cubeData.value);
         }
 
@@ -24,11 +24,6 @@ namespace Core.Gameplay
         public void Launch(Vector3 direction, float force)
         {
             _controller.Launch(direction, force);
-        }
-
-        public void MovePosition(Vector3 position)
-        {
-            _controller.MovePosition(position);
         }
     }
 }

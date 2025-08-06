@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+﻿using Core.Gameplay;
+using UnityEngine;
 
 namespace Core.Data
 {
     public readonly struct CubeCollisionData
     {
-        public readonly GameObject parent;
+        public readonly Cube parent;
         public readonly CubeData parentData;        
-        public readonly GameObject other;
+        public readonly Cube other;
         public readonly CubeData otherData;
         public readonly Collision collision;
 
-        public CubeCollisionData(GameObject parent,
+        public CubeCollisionData(Cube parent,
                                  CubeData parentData,
-                                 GameObject other,
+                                 Cube other,
                                  CubeData otherData,
                                  Collision collision)
         {
