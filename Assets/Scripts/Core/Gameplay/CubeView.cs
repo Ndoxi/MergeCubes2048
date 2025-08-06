@@ -1,6 +1,7 @@
 using Core.Data;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Gameplay
 {
@@ -9,6 +10,12 @@ namespace Core.Gameplay
         [SerializeField] private MeshRenderer _meshRenderer;
         [SerializeField] private TextMeshPro[] _textMeshes;
         private CubeColorsData _colorsData;
+
+        [Inject]
+        private void Construct(CubeColorsData colorsData)
+        {
+            _colorsData = colorsData;
+        }
 
         public void Init(int value)
         {

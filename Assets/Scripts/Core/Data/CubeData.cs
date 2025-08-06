@@ -1,16 +1,16 @@
-﻿using Core.Extensions;
+﻿using Extensions;
 
 namespace Core.Data
 {
     public readonly struct CubeData
     {
-        public readonly int pot;
+        public readonly int power;
         public readonly int value;
 
-        public CubeData(int pot)
+        public CubeData(int power)
         {
-            this.pot = pot;
-            value = pot.AsPowerOfTwo();
+            this.power = power;
+            value = power.AsPowerOfTwo();
         }
     }
 }

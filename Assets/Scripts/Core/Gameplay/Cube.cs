@@ -25,5 +25,10 @@ namespace Core.Gameplay
         {
             _controller.Launch(direction, force);
         }
+
+        public void MovePosition(Vector3 position)
+        {
+            _controller.MovePosition(position);
+        }
     }
 }
