@@ -15,15 +15,12 @@ namespace Core.StateMachines
                 _current.OnExit();
 
             _current = GetState<T>();
-            if (_current != null)
-                _current.OnEnter();
+            _current.OnEnter();
         }
 
         private IState GetState<T>() where T : IState
         {
-            if (states.TryGetValue(typeof(T), out IState state))
-                return state;
-            return null;
+            return states[typeof(T)];
         } 
     }
 }

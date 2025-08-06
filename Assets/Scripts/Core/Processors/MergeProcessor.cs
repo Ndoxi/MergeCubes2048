@@ -9,11 +9,11 @@ namespace Core.Processors
     {
         private readonly float _impuseThreshold;
         private readonly float _mergeForce;
-        private readonly IMergeObserverChanel _observerChanel;
+        private readonly IMergeObserver _observerChanel;
 
         public MergeProcessor(float impuseThreshold,
                               float mergeForce,
-                              IMergeObserverChanel observerChanel)
+                              IMergeObserver observerChanel)
         {
             _impuseThreshold = impuseThreshold;
             _mergeForce = mergeForce;

@@ -2,8 +2,5 @@
 
 namespace Core.Observers
 {
-    public interface IMergeObserver
-    {
-        void Notify(CubeData data);
-    }
+    public interface IMergeObserver : IObserver<CubeData> { }
 }

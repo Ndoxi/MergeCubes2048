@@ -1,20 +1,20 @@
-using Core.Processors;
+﻿using Core.Processors;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Core.ViewsUGUI
 {
-    public class ScoreView : MonoBehaviour
+    public class TimeView : MonoBehaviour
     {
-        private const string Label = "Score: {0}";
+        private const string Label = "Time: {0}";
         [SerializeField] private TextMeshProUGUI _textMesh;
-        private ScoreProcessor _scoreProcessor;
+        private TimeProcessor _timeProcessor;
 
         [Inject]
-        private void Construct(ScoreProcessor scoreProcessor)
+        private void Construct(TimeProcessor timeProcessor)
         {
-            _scoreProcessor = scoreProcessor;
+            _timeProcessor = timeProcessor;
         }
 
         private void Awake()
@@ -24,12 +24,12 @@ namespace Core.ViewsUGUI
 
         private void OnEnable()
         {
-            _scoreProcessor.OnUpdate += UpdateLabel;
+            _timeProcessor.OnUpdate += UpdateLabel;
         }
 
         private void OnDisable()
         {
-            _scoreProcessor.OnUpdate -= UpdateLabel;
+            _timeProcessor.OnUpdate -= UpdateLabel;
         }
 
         private void UpdateLabel(int value)

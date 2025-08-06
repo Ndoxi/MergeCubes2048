@@ -7,23 +7,24 @@ namespace Core.Processors
     public class ScoreProcessor : IDisposable
     {
         public event Action<int> OnUpdate;
+        public int score => _score;
 
-        private readonly IMergeObserverChanel _observerChanel;
+        private readonly IMergeObserver _observerChanel;
         private int _score;
 
-        public ScoreProcessor(IMergeObserverChanel observerChanel)
+        public ScoreProcessor(IMergeObserver observerChanel)
         {
             _observerChanel = observerChanel;
         }
 
         public void Init()
         {
-            _observerChanel.OnMerge += UpdateScore;
+            _observerChanel.OnNotify += UpdateScore;
         }
 
         public void Dispose()
         {
-            _observerChanel.OnMerge -= UpdateScore;
+            _observerChanel.OnNotify -= UpdateScore;
         }
 
         private void UpdateScore(CubeData data)

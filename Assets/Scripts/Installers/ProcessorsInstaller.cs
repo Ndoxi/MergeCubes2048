@@ -8,24 +8,25 @@ namespace Installers
 {
     public class ProcessorsInstaller : MonoInstaller
     {
-        [SerializeField] private float _impulseThreshold;
-        [SerializeField] private float _mergeForce;
+        [Header("Time Processor Settings")]
+        [SerializeField] private float _initialTime = 30f;
+        [SerializeField] private bool _paused = true;
+
+        [Header("Merge Processor Settings")]
+        [SerializeField] private float _impulseThreshold = 0.2f;
+        [SerializeField] private float _mergeForce = 3.5f;
 
         public override void InstallBindings()
         {
-            BindCollisionProcessor();
-        }
-
-        private void BindCollisionProcessor()
-        {
-            Container.Bind<IMergeObserverChanel>()
-                     .To<MergeObserverChanel>()
-                     .AsSingle();
-
             Container.Bind(typeof(ScoreProcessor), typeof(IDisposable))
                      .To<ScoreProcessor>()
                      .AsSingle();            
             
+            Container.Bind(typeof(TimeProcessor), typeof(IDisposable))
+                     .To<TimeProcessor>()
+                     .AsSingle()
+                     .WithArguments(_initialTime, _paused);
+
             Container.Bind<ICollisionObserver>()
                      .To<MergeProcessor>()
                      .AsSingle()

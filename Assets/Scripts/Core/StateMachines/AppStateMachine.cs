@@ -14,7 +14,8 @@ namespace Core.StateMachines
             _states = new Dictionary<Type, IState>()
             {
                 { typeof(InitializationState), instantiator.Instantiate<InitializationState>() },
-                { typeof(GameplayState), instantiator.Instantiate<GameplayState>() }
+                { typeof(GameplayState), instantiator.Instantiate<GameplayState>() },
+                { typeof(GameOverState), instantiator.Instantiate<GameOverState>() }
             };
         }
     }
