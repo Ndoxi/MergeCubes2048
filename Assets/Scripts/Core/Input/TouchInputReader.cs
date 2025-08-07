@@ -9,7 +9,7 @@ namespace Core.Input
         public event Action LaunchAction;
         public event Action<float> MoveAction;
 
-        [SerializeField] private float _sensativity = 1;
+        [SerializeField] private float _sensativity = 750;
 
         private bool _isDragging = false;
 
@@ -23,7 +23,7 @@ namespace Core.Input
             if (!_isDragging) 
                 return;
 
-            var delta = eventData.delta.x;
+            var delta = eventData.delta.x / Screen.width;
             MoveAction?.Invoke(delta * _sensativity);
         }
 
