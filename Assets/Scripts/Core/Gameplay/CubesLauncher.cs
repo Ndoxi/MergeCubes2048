@@ -61,6 +61,8 @@ namespace Core.Gameplay
                 return;
 
             _current.Launch(Vector3.forward, _launchForce);
+            _current.NotifyOnLaunch();
+
             _current = null;
 
             StartCoroutine(PrepareCube());

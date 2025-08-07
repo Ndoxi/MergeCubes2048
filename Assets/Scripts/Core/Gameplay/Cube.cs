@@ -7,11 +7,10 @@ namespace Core.Gameplay
     {
         [SerializeField] private CubePhysicController _controller;
         [SerializeField] private CubeView _view;
-        private CubeData _cubeData;
+        [SerializeField] private CubeVFXPlayer _vfxPlayer;
 
         public void Init(CubeData cubeData)
         {
-            _cubeData = cubeData;
             _controller.Init(this, cubeData);
             _view.Init(cubeData.value);
         }
@@ -24,6 +23,16 @@ namespace Core.Gameplay
         public void Launch(Vector3 direction, float force)
         {
             _controller.Launch(direction, force);
+        }
+
+        public void NotifyOnLaunch()
+        {
+            _vfxPlayer.OnLaunch();
+        }
+
+        public void NotifyOnMerge()
+        {
+            _vfxPlayer.OnMerge();
         }
     }
 }

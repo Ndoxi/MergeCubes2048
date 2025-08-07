@@ -44,6 +44,7 @@ namespace Core.Processors
             
             data.parent.Init(new CubeData(data.parentData.power + 1));
             data.parent.Launch(Vector3.up, _mergeForce);
+            data.parent.NotifyOnMerge();
 
             _observerChanel.Notify(data.parentData);
         }

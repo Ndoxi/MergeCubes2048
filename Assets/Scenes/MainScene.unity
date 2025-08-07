@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 0028f39b1d0effd48a236d5f229a3d2b, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -2651,6 +2651,7 @@ GameObject:
   - component: {fileID: 2121697980}
   - component: {fileID: 2121697981}
   - component: {fileID: 2121697984}
+  - component: {fileID: 2121697985}
   - component: {fileID: 2121697983}
   m_Layer: 0
   m_Name: SceneContext
@@ -2679,6 +2680,7 @@ MonoBehaviour:
   - {fileID: 2121697980}
   - {fileID: 2121697981}
   - {fileID: 2121697984}
+  - {fileID: 2121697985}
   - {fileID: 2121697983}
   _installerPrefabs: []
   _autoRun: 1
@@ -2804,6 +2806,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565aa4fe07f67c0488dafd49604bacca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2121697985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121697975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f846f8f536d59994f90b64898f531e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultBackgroundMusicClip: {fileID: 8300000, guid: faa2d0c209878cb49b177c3b62984e96, type: 3}
+  _volume: 0.075
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

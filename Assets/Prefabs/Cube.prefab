@@ -592,6 +592,7 @@ GameObject:
   - component: {fileID: 2656264735729587376}
   - component: {fileID: 6564249306994649360}
   - component: {fileID: 220459669930349731}
+  - component: {fileID: 3631840042394027352}
   - component: {fileID: 5031898635796777253}
   m_Layer: 0
   m_Name: Cube
@@ -631,6 +632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 220459669930349731}
   _view: {fileID: 9063335453975136907}
+  _vfxPlayer: {fileID: 3631840042394027352}
 --- !u!114 &220459669930349731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +646,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocityThreshold: 1
+--- !u!114 &3631840042394027352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5365602507219823045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ea627cf1084df4ba5836ab39538616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cubeView: {fileID: 9063335453975136907}
+  _launchVFX: {fileID: 11400000, guid: e8a836bfd6845624aa0faa9c8e214c10, type: 2}
+  _mergeVFX: {fileID: 11400000, guid: 865e9b08e2f0b9846abaebc076133c3f, type: 2}
 --- !u!54 &5031898635796777253
 Rigidbody:
   m_ObjectHideFlags: 0

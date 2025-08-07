@@ -6,7 +6,6 @@ namespace Installers
 {
     public class ObserversInstaller : MonoInstaller
     {
-
         public override void InstallBindings()
         {
             Container.Bind<IMergeObserver>()
@@ -20,7 +19,7 @@ namespace Installers
             Container.Bind<IObserver>()
                      .To<GameRestartObserver>()
                      .AsSingle()
-                     .WhenInjectedInto<GameOverMediator>();
+                     .WhenInjectedInto<GameOverMediator>();            
         }
     }
 }
