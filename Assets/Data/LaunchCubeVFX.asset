@@ -16,4 +16,4 @@ MonoBehaviour:
   _soundVolume: 1
   _animationDuration: 0.3
   _animationEase: 23
-  _punchScaleMultiplier: {x: 0, y: 0, z: 0.5}
+  _punchScaleMultiplier: {x: 0, y: 0, z: 1.5}
