@@ -11,6 +11,7 @@ namespace Core.Processors
 
         private readonly IMergeObserver _observerChanel;
         private int _score;
+        private bool _initialized;
 
         public ScoreProcessor(IMergeObserver observerChanel)
         {
@@ -19,12 +20,23 @@ namespace Core.Processors
 
         public void Init()
         {
+            if (_initialized)
+                return;
+
             _observerChanel.OnNotify += UpdateScore;
+
+            _initialized = true;
         }
 
         public void Dispose()
         {
             _observerChanel.OnNotify -= UpdateScore;
+        }
+
+        public void Reset()
+        {
+            _score = 0;
+            OnUpdate?.Invoke(_score);
         }
 
         private void UpdateScore(CubeData data)

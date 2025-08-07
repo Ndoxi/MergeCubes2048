@@ -35,18 +35,18 @@ namespace Core.Gameplay
             _inputReader.MoveAction -= MoveCube;
         }
 
-        public void Init()
-        {
-            PrepareCubeImmediately();
-        }
-
-        private void PrepareCubeImmediately()
+        public void PrepareCubeImmediately()
         {
             if (_current != null)
                 return;
 
             _current = _cubeSpawner.Spawn(_spawnPoint.position, Quaternion.identity);
             _current.Hold();
+        }
+
+        public void Free()
+        {
+            _current = null;
         }
 
         private IEnumerator PrepareCube()

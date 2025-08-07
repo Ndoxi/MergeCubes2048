@@ -1,4 +1,5 @@
 ﻿using Core.Data;
+using Core.Gameplay;
 using Core.Observers;
 using System;
 using UnityEngine;
@@ -10,14 +11,17 @@ namespace Core.Processors
         private readonly float _impuseThreshold;
         private readonly float _mergeForce;
         private readonly IMergeObserver _observerChanel;
+        private readonly CubeSpawner _spawner;
 
         public MergeProcessor(float impuseThreshold,
                               float mergeForce,
-                              IMergeObserver observerChanel)
+                              IMergeObserver observerChanel, 
+                              CubeSpawner spawner)
         {
             _impuseThreshold = impuseThreshold;
             _mergeForce = mergeForce;
             _observerChanel = observerChanel;
+            _spawner = spawner;
         }
 
         public void Notify(CubeCollisionData data)
@@ -36,7 +40,7 @@ namespace Core.Processors
             var spawnPoint = data.collision.GetContact(0).point;
             spawnPoint.y += 0.2f;
 
-            UnityEngine.Object.Destroy(data.other.gameObject);
+            _spawner.Destroy(data.other);
             
             data.parent.Init(new CubeData(data.parentData.power + 1));
             data.parent.Launch(Vector3.up, _mergeForce);

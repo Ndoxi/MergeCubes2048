@@ -27,7 +27,6 @@ namespace Core.StateMachines
         {
             _scoreProcessorContainer.Value.Init();
             _timeProcessorContainer.Value.Init();
-            _cubesLauncherContainer.Value.Init();
             _cubesLauncherContainer.Value.gameObject.SetActive(false);
 
             _stateMachineContainer.Value.Enter<GameplayState>();

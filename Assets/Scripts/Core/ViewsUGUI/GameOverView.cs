@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.ViewsUGUI
 {
@@ -10,8 +11,21 @@ namespace Core.ViewsUGUI
         private const string ScoreLabel = "Total Score: {0}";
         private const string TimeLabel = "Total Playtime: {0}";
 
+        public event Action OnRestartButtonClick;
+
         [SerializeField] private TextMeshProUGUI _scoreTextMesh;
         [SerializeField] private TextMeshProUGUI _timeTextMesh;
+        [SerializeField] private Button _restartButton;
+
+        private void OnEnable()
+        {
+            _restartButton.onClick.AddListener(Restart);
+        }
+
+        private void OnDisable()
+        {
+            _restartButton.onClick.RemoveListener(Restart);
+        }
 
         public void Show(int score, float playtime)
         {
@@ -25,6 +39,11 @@ namespace Core.ViewsUGUI
         public void Hide()
         {
             gameObject.SetActive(false);
+        }
+
+        private void Restart()
+        {
+            OnRestartButtonClick?.Invoke();
         }
     }
 }

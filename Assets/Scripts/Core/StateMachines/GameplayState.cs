@@ -24,6 +24,8 @@ namespace Core.StateMachines
             _cubesLauncherContainer.Value.gameObject.SetActive(true);
             _timeProcessorContainer.Value.SetPaused(false);
 
+            _cubesLauncherContainer.Value.PrepareCubeImmediately();
+
             _timeProcessorContainer.Value.OnUpdate += UpdateState;
         }
 

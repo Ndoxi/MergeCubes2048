@@ -7,4 +7,10 @@ namespace Core.Observers
         event Action<T> OnNotify;
         void Notify(T data);
     }
+
+    public interface IObserver
+    {
+        event Action OnNotify;
+        void Notify();
+    }
 }

@@ -1,4 +1,5 @@
-﻿using Core.Observers;
+﻿using Core.Mediators;
+using Core.Observers;
 using Zenject;
 
 namespace Installers
@@ -15,6 +16,11 @@ namespace Installers
             Container.Bind<IGameOverObserver>()
                      .To<GameOverObserver>()
                      .AsSingle();
+
+            Container.Bind<IObserver>()
+                     .To<GameRestartObserver>()
+                     .AsSingle()
+                     .WhenInjectedInto<GameOverMediator>();
         }
     }
 }

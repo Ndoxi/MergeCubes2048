@@ -13,9 +13,11 @@ namespace Core.Processors
 
         private readonly ITickService _ticker;
         private readonly IMergeObserver _observerChanel;
+        private readonly float _initialTime;
         private float _totalTime;
         private float _time;
         private bool _paused;
+        private bool _initialized;
 
         public TimeProcessor(ITickService ticker,
                              IMergeObserver observerChanel,
@@ -24,14 +26,20 @@ namespace Core.Processors
         {
             _ticker = ticker;
             _observerChanel = observerChanel;
+            _initialTime = initialTime;
             _time = initialTime;
             _paused = paused;
         }
 
         public void Init()
         {
+            if (_initialized)
+                return;
+
             _observerChanel.OnNotify += AddTimeOnMerge;
             _ticker.OnTick += Tick;
+
+            _initialized = true;
         }
 
         public void Dispose()
@@ -43,6 +51,14 @@ namespace Core.Processors
         public void SetPaused(bool paused)
         {
             _paused = paused;
+        }
+
+        public void Reset()
+        {
+            _time = _initialTime;
+            _totalTime = 0f;
+
+            OnUpdate?.Invoke(Mathf.CeilToInt(_time));
         }
 
         private void Tick(float delta)
